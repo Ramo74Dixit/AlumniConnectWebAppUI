@@ -6,9 +6,10 @@ import '@fortawesome/fontawesome-free/css/all.min.css'; // Import Font Awesome C
 const Footer = () => {
     const currentYear = new Date().getFullYear();
 
+
     return (
         <footer className="bg-gray-800 text-white text-center py-4 fixed bottom-0 w-full">
-            <div className="mt-4">
+            <div className="mt-5">
                 <a href="https://www.facebook.com" className="text-white mx-2 hover:text-gray-400" aria-label="Facebook">
                     <i className="fab fa-facebook-f"></i>
                 </a>
