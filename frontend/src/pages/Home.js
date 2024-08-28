@@ -1,11 +1,39 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import TopAlumlist from "../components/TopAlumlist";
+const profiles = [
+  {
+    image: '/AlumImage.png',
+    fullName: 'John Doe',
+    title: 'Software Engineer',
+    tagline: 'Building scalable web applications',
+  },
+  {
+    image: '/AlumImage.png',
+    fullName: 'Jane Smith',
+    title: 'Product Manager',
+    tagline: 'Leading product teams to success',
+  },
+  {
+    image: '/AlumImage.png',
+    fullName: 'Alice Johnson',
+    title: 'UX Designer',
+    tagline: 'Crafting intuitive user experiences',
+  },
+];
 
 const HeroPage = () => {
+  // Function to scroll to the next section
+  const scrollToNextSection = () => {
+    const nextSection = document.getElementById("next-section");
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="w-full z-10">
-      {/* Hero Image Section */}
-      <div className="relative w-full h-[90vh]">
+      <div className="relative w-full h-[90vh]" onClick={scrollToNextSection}>
         <img
           src="./heroimg.jpg"
           alt="Hero"
@@ -24,7 +52,7 @@ const HeroPage = () => {
           </button>
         </div>
       </div>
-      <div className="w-[80vw] h-[90vh] mt-8 ml-[10vw]">
+      <div className="w-[80vw] h-[90vh] mt-8 ml-[10vw]" id="next-section">
         <div className="flex">
           <div className="w-[30vw] h-[40vh] bg-[#CFD0DC] m-3 rounded-3xl flex flex-col relative overflow-hidden">
             <h2 className="text-3xl font-bold ml-6 mt-10">Feature name</h2>
@@ -79,7 +107,7 @@ const HeroPage = () => {
             />
           </div>
           <div className="w-[30vw] h-[40vh] bg-blue-400 m-3 rounded-3xl flex flex-col relative overflow-hidden">
-          <h2 className="text-3xl font-bold ml-6 mt-10">Feature name</h2>
+            <h2 className="text-3xl font-bold ml-6 mt-10">Feature name</h2>
             <p className="mt-2 text-[20px] font-normal ml-6">
               Labore proident nisi fugiat nostrud sint mollit aliqua ipsum ad
               veniam cupidatat
@@ -95,6 +123,20 @@ const HeroPage = () => {
           </div>
         </div>
       </div>
+      <div className="flex w-full h-[30vw] space-x-4">
+        {profiles.map((profile, index) => (
+          <TopAlumlist
+            key={index}
+            image={profile.image}
+            fullName={profile.fullName}
+            title={profile.title}
+            tagline={profile.tagline}
+          />
+        ))}
+      </div>
+      <button className="bg-orange-500 w-[15vw] h-[8vh] rounded-full text-center text-white font-bold text-xl mt-8 ml-[42vw] hover:bg-white border border-4 border-orange-500 hover:text-orange-500">
+        <Link to="/alumnidirectory">Explore More</Link>
+      </button>
     </div>
   );
 };

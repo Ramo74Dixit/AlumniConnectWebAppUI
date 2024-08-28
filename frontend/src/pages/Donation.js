@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-import React from 'react'
-
-const Donation = () => {
-  return (
-    <div>
-     Donation 
-    </div>
-  )
-}
-
-export default Donation
-=======
 import React from 'react';
 import Navbar from '../components/Navbar'; // Assuming you have a Navbar component
 
@@ -102,4 +89,3 @@ const Donation = () => {
 };
 
 export default Donation;
->>>>>>> 92927dab02bb800e59c1de30cf22c4a1a496879f
