@@ -9,6 +9,7 @@ import Events from './pages/Event';
 import Donation from './pages/Donation';
 import Contact from './pages/Contact';
 import './App.css';
+import RegAlumni from './pages/RegAlumni';
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
             <Route path="/events" element={<Events />} />
             <Route path="/donation" element={<Donation />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/regAlumni" element={<RegAlumni />} />
+
           </Routes>
         </div>
         <Footer />

@@ -5,7 +5,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-800 text-white text-center py-4 mt-8 w-full relative"> {/* Added mt-8 for spacing */}
+    <footer className="bg-gray-800 text-white text-center py-4 w-full relative"> {/* Added mt-8 for spacing */}
       <div className="mt-5">
         <a href="https://www.facebook.com" className="text-white mx-2 hover:text-gray-400" aria-label="Facebook">
           <i className="fab fa-facebook-f"></i>
