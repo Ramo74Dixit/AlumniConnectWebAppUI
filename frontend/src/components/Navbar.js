@@ -89,6 +89,7 @@ const Navbar = () => {
           </Link>
         </div>
       </div>
+<<<<<<< Updated upstream
       <div className="hidden md:flex space-x-4">
         <button
           className="border border-green-600 px-4 py-2 rounded text-green-600 hover:shadow-2xl shadow-green-800"
@@ -123,6 +124,14 @@ const Navbar = () => {
         )}
         <button className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
           Sign in
+=======
+      <div className='hidden md:flex space-x-4'>
+        <button className='border border-green-600 px-4 py-2 rounded text-green-600 hover:shadow-2xl shadow-green-800'>
+        <Link to="/register">Register</Link>
+        </button>
+        <button className='bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition'>
+          <Link to="/signin">Signin</Link>
+>>>>>>> Stashed changes
         </button>
       </div>
     </div>
