@@ -89,7 +89,6 @@ const Navbar = () => {
           </Link>
         </div>
       </div>
-<<<<<<< Updated upstream
       <div className="hidden md:flex space-x-4">
         <button
           className="border border-green-600 px-4 py-2 rounded text-green-600 hover:shadow-2xl shadow-green-800"

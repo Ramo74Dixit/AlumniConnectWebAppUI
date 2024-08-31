@@ -5,11 +5,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-<<<<<<< Updated upstream
-    <footer className="bg-gray-800 text-white text-center py-4 w-full relative"> {/* Added mt-8 for spacing */}
-=======
-    <footer className="bg-gray-800 text-white text-center py-4  w-full relative mt-auto"> {/* Added mt-8 for spacing */}
->>>>>>> Stashed changes
+    <footer className="bg-gray-800 text-white text-center py-4 mt-8 w-full relative"> {/* Added mt-8 for spacing */}
       <div className="mt-5">
     <footer className="bg-gray-800 text-white text-center  py-[10px] mt-8 h-[100px] w-full relative"> {/* Added mt-8 for spacing */}
       <div className="">
@@ -36,4 +32,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default Footer;
