@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaUserGraduate, FaSchool, FaUser } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const roles = {
   alumnilist: { name: 'Alumni', icon: <FaUserGraduate /> },
@@ -15,17 +16,55 @@ const Register = () => {
     role: 'alumnilist', // Default role
   });
 
+  const navigate = useNavigate(); // Create navigate function
+
+  // Handle input changes
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  // Handle form submission
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle the registration logic here (e.g., API call)
-    console.log(formData);
+    const endpoint = `http://localhost:5000/register/${formData.role}`;
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          password: formData.password
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      alert('Registration successful!'); // Alert on successful registration
+      console.log('Registration successful:', result);
+      // Reset the form
+      setFormData({
+        name: '',
+        email: '',
+        password: '',
+        role: 'alumnilist', // Reset to default role
+      });
+
+      // Redirect to the login page after successful registration
+      navigate('/signin');
+    } catch (error) {
+      alert('Registration failed. Please try again.'); // Alert on registration failure
+      console.error('Registration error:', error);
+    }
   };
 
+  // Handle role change
   const handleRoleChange = (role) => {
     setFormData({ ...formData, role });
   };
@@ -34,7 +73,7 @@ const Register = () => {
     <div className="min-h-screen bg-[#f5f5f5] flex justify-center items-center">
       <div className="w-full max-w-md bg-white p-8 border border-[#8c8c8c] rounded-lg shadow-lg">
         <h2 className="text-[#326C85] text-2xl font-bold text-center mb-6">Register</h2>
-        
+
         {/* Role Toggle */}
         <div className="flex justify-around mb-6">
           {Object.keys(roles).map((key) => (

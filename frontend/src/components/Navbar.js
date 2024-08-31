@@ -100,7 +100,7 @@ const Navbar = () => {
           className="border border-green-600 px-4 py-2 rounded text-green-600 hover:shadow-2xl shadow-green-800"
           onClick={toggleDrop}
         >
-          Register
+          Update Profile
         </button>
         {dropDown && (
           <div className="absolute left-1/2 top-full transform -translate-x-1/2 mt-2 bg-[#333] shadow-lg border border-[#555] rounded-lg w-64 z-50">

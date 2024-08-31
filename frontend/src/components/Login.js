@@ -8,13 +8,13 @@ const roles = {
   students: { name: 'Student', icon: <FaUser /> },
 };
 
-const Login = ({ notify }) => {
+const Login = () => {
   const [formData, setFormData] = useState({
     emailOrPhone: '',
     password: '',
     role: 'alumnilist', // Default role
   });
-
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
@@ -26,7 +26,7 @@ const Login = ({ notify }) => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`http://localhost:4000/login-${formData.role}`, {
+      const response = await fetch(`http://localhost:5000/login-${formData.role}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -39,24 +39,29 @@ const Login = ({ notify }) => {
 
       if (response.ok) {
         const data = await response.json();
-        notify('Login successful!'); // Trigger success notification
-        navigate(`/${formData.role}`); // Navigate to the appropriate dashboard
+        alert('Login successful!'); // Basic notification for login success
+        navigate(`/`); // Navigate to the appropriate dashboard
       } else {
         const errorData = await response.json();
-        notify(`Error: ${errorData.message}`, { type: 'error' }); // Trigger error notification
+        setError(`Error: ${errorData.message}`);
       }
     } catch (error) {
       console.error('Error:', error);
-      notify('An error occurred. Please try again.', { type: 'error' }); // Trigger error notification
+      setError('An error occurred. Please try again.');
     }
   };
 
   const handleRoleChange = (role) => {
     setFormData({ ...formData, role });
+    setError(''); // Clear error when changing role
   };
 
   const handleForgotPassword = () => {
     navigate('/forgot-password'); // Redirect to forgot password page
+  };
+
+  const handleRegister = () => {
+    navigate('/register'); // Redirect to registration page
   };
 
   return (
@@ -79,6 +84,9 @@ const Login = ({ notify }) => {
             </button>
           ))}
         </div>
+
+        {/* Error message */}
+        {error && <div className="text-red-500 mb-4">{error}</div>}
 
         {/* Login Form */}
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -119,6 +127,17 @@ const Login = ({ notify }) => {
             className="text-[#326C85] hover:underline focus:outline-none transition duration-300"
           >
             Forgot Password?
+          </button>
+        </div>
+
+        {/* Register Link */}
+        <div className="mt-4 text-center">
+          <span className="text-gray-600">Don't have an account?</span>
+          <button
+            onClick={handleRegister}
+            className="ml-2 text-[#326C85] hover:underline focus:outline-none transition duration-300"
+          >
+            Register Here
           </button>
         </div>
       </div>
