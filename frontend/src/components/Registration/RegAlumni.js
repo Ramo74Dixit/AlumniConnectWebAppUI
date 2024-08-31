@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import bg from "../assets/Image6.png";
-import img from "../assets/Image7.png";
+import bg from "../../assets/Image6.png";
+import img from "../../assets/Image7.png";
 
 const RegAlumni = () => {
   // Generate years for the batch dropdown

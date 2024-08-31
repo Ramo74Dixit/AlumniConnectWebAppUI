@@ -19,7 +19,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="w-full h-[12vh] border shadow-lg flex items-center justify-between px-4 md:px-10 z-50">
+    <div className="w-full h-[12vh] border shadow-lg flex items-center justify-between px-4 md:px-10 z-50 relative">
       <div className="flex items-center">
         <img
           src="/logo.png"
@@ -30,14 +30,16 @@ const Navbar = () => {
           AlumniConnect
         </div>
       </div>
+
+      {/* Mobile Menu Toggle */}
       <div className="md:hidden">
         <button onClick={toggleMenu} className="text-3xl focus:outline-none">
           {isOpen ? <HiX /> : <HiMenu />}
         </button>
       </div>
-      <div
-        className={`hidden md:flex space-x-4 font-normal text-[#8A8A8A] text-lg`}
-      >
+
+      {/* Desktop Menu */}
+      <div className="hidden md:flex space-x-4 font-normal text-[#8A8A8A] text-lg">
         <Link to="/" className="relative px-1 py-2 group">
           Home
           <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-green-500 transition-all duration-300 group-hover:w-full"></span>
@@ -63,6 +65,8 @@ const Navbar = () => {
           <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-green-500 transition-all duration-300 group-hover:w-full"></span>
         </Link>
       </div>
+
+      {/* Mobile Dropdown Menu */}
       <div
         className={`md:hidden absolute top-[12vh] left-0 w-full bg-white shadow-lg ${
           isOpen ? "block" : "hidden"
@@ -89,7 +93,9 @@ const Navbar = () => {
           </Link>
         </div>
       </div>
-      <div className="hidden md:flex space-x-4">
+
+      {/* Register and Signin Buttons */}
+      <div className="hidden md:flex space-x-4 relative z-50">
         <button
           className="border border-green-600 px-4 py-2 rounded text-green-600 hover:shadow-2xl shadow-green-800"
           onClick={toggleDrop}
@@ -97,7 +103,7 @@ const Navbar = () => {
           Register
         </button>
         {dropDown && (
-          <div className="absolute left-1/5 transform -translate-x-1/2 mt-2 bg-[#333] shadow-lg border border-[#555] rounded-lg w-64">
+          <div className="absolute left-1/2 top-full transform -translate-x-1/2 mt-2 bg-[#333] shadow-lg border border-[#555] rounded-lg w-64 z-50">
             <Link
               to="/register-college"
               className="dropdown-item block px-4 py-2 font-medium text-white hover:bg-[#444] transition-transform duration-300 ease-in-out rounded-lg"
@@ -122,15 +128,7 @@ const Navbar = () => {
           </div>
         )}
         <button className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
-          Sign in
-=======
-      <div className='hidden md:flex space-x-4'>
-        <button className='border border-green-600 px-4 py-2 rounded text-green-600 hover:shadow-2xl shadow-green-800'>
-        <Link to="/register">Register</Link>
-        </button>
-        <button className='bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition'>
           <Link to="/signin">Signin</Link>
->>>>>>> Stashed changes
         </button>
       </div>
     </div>

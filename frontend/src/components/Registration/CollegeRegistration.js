@@ -2,100 +2,103 @@ import React from "react";
 
 const CollegeRegistration = () => {
   return (
-    <div className="relative">
-      <img src="./S1.png" className="absolute w-full h-[850px]" />
-      <div className="absolute flex">
-        {/* Left */}
-        <div className="ml-[230px] mt-[40px]">
-          {/* Content */}
-          <div className="pl-[20px] w-[350px]">
-            <div className="font-extrabold text-3xl font-serif">
-              College Registration{" "}
-            </div>
-            <div className="text-xl font-serif">
-              Fill in the form to get in the touch{" "}
-            </div>
-          </div>
-          {/* Images */}
-          <div>
-            <img src="./S2.png" className="absolute w-[350px] h-[500px]" />
-          </div>
-        </div>
-        {/* Right */}
-        <div className="bg-slate-50 rounded-md h-[570px] w-[500px] ml-[250px] mt-[40px]">
-          <div className="pl-[28px] pt-[10px]">
-            <div className="flex">
-              <div className="mt-[25px]">
-                <label className="font-serif text-xm font-bold">
+    <div
+      className="min-h-screen min-w-screen bg-cover bg-no-repeat bg-center flex flex-row"
+      style={{ backgroundImage: `url('/S1.png')` }}
+    >
+      {/* Left Section */}
+      <div className="w-1/2 flex flex-col justify-start items-start p-10">
+        <h1 className="text-4xl font-bold mb-2">College Registration</h1>
+        <p className="text-xl mb-4">Fill in the form to get in touch</p>
+        <img
+          src="/S2.png"
+          alt="College Registration Image"
+          className="rounded-lg mt-8 w-[350px] h-[500px]" 
+        />
+      </div>
+
+      {/* Right Section */}
+      <div className="w-1/2 flex items-center justify-center p-10">
+        <div className="w-full bg-white p-8 rounded-lg shadow-lg">
+          <h2 className="text-2xl font-bold mb-6 text-start">
+            Fill Your Details
+          </h2>
+          <form>
+            <div className="flex space-x-4 mb-4">
+              <div className="w-1/2">
+                <label className="block text-sm font-medium mb-1" htmlFor="collegeName">
                   College Name
                 </label>
                 <input
-                  placeholder="input text"
-                  className="pl-[10px] bg-slate-100"
+                  type="text"
+                  id="collegeName"
+                  placeholder="Enter College Name"
+                  className="w-full p-2 bg-[#f3f4f6] border rounded"
                 />
               </div>
-              <div className="mt-[25px]">
-                <label className="font-serif text-xm font-bold">
+              <div className="w-1/2">
+                <label className="block text-sm font-medium mb-1" htmlFor="collegeCode">
                   College Code
                 </label>
                 <input
-                  placeholder="input text"
-                  className="pl-[10px] bg-slate-100"
+                  type="text"
+                  id="collegeCode"
+                  placeholder="Enter College Code"
+                  className="w-full p-2 bg-[#f3f4f6] border rounded"
                 />
               </div>
             </div>
-            <div className="mt-[25px]">
-              <label className="font-serif text-xm font-bold">
+            <div className="mb-4">
+              <label className="block text-sm font-medium mb-1" htmlFor="establishingYear">
                 College Establishing Year
               </label>
-              <div>
-                <input
-                  className="w-[420px] pl-[10px] bg-slate-100"
-                  placeholder="input text"
-                />
-              </div>
+              <input
+                type="text"
+                id="establishingYear"
+                placeholder="Enter Establishing Year"
+                className="w-full p-2 bg-[#f3f4f6] border rounded"
+              />
             </div>
-            <div className="mt-[25px]">
-              <label className="font-serif text-xm font-bold">
+            <div className="mb-4">
+              <label className="block text-sm font-medium mb-1" htmlFor="collegeDirector">
                 College Director
               </label>
-              <div>
-                <input
-                  className="w-[420px] pl-[10px] bg-slate-100"
-                  placeholder="input text"
-                />
-              </div>
+              <input
+                type="text"
+                id="collegeDirector"
+                placeholder="Enter Director Name"
+                className="w-full p-2 bg-[#f3f4f6] border rounded"
+              />
             </div>
-            <div className="mt-[25px]">
-              <label className="font-serif text-xm font-bold">
+            <div className="mb-4">
+              <label className="block text-sm font-medium mb-1" htmlFor="coursesAvailable">
                 Courses Available in College
               </label>
-              <div>
-                <input
-                  className="w-[420px] pl-[10px] bg-slate-100"
-                  placeholder="input text"
-                />
-              </div>
+              <input
+                type="text"
+                id="coursesAvailable"
+                placeholder="Enter Available Courses"
+                className="w-full p-2 bg-[#f3f4f6] border rounded"
+              />
             </div>
-            <div className="mt-[25px]">
-              <label className="font-serif text-xm font-bold">
-                No. of alumini
+            <div className="mb-4">
+              <label className="block text-sm font-medium mb-1" htmlFor="numOfAlumni">
+                No. of Alumni
               </label>
-              <div>
-                <input
-                  className="w-[420px] pl-[10px] bg-slate-100"
-                  placeholder="input text"
-                />
-              </div>
-            </div>  
-            
-              <div className="w-[430px] h-[36px] mt-[40px] bg-green-600 text-sm font-serif rounded">
-                <button className="ml-[170px] mt-[10px] text-white">
-                  Submit
-                </button>
-            
+              <input
+                type="text"
+                id="numOfAlumni"
+                placeholder="Enter Number of Alumni"
+                className="w-full p-2 bg-[#f3f4f6] border rounded"
+              />
             </div>
-          </div>
+            <button
+              type="submit"
+              className="w-full py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+            >
+              Submit
+            </button>
+          </form>
         </div>
       </div>
     </div>
