@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -8,27 +8,49 @@ import JobPortal from './pages/JobPortal';
 import Events from './pages/Event';
 import Donation from './pages/Donation';
 import Contact from './pages/Contact';
+import SidebarLayout from './pages/SidebarLayOut'; // Import the new layout component
+import AlumniProfile from './pages/AlumniProfile'; // Import AlumniProfile
 import './App.css';
+import AluminiRegistration from "./components/Registration/AluminiRegistration";
+import StudentRegistration from "./components/Registration/StudentRegistration";
+import CollegeRegistration from "./components/Registration/CollegeRegistration";
+import Login from "./components/Login"
+import Register from './components/Register'
+import AlumniProfileFeed from './pages/AlumniProfileFeed';
 
 function App() {
+  const location = useLocation(); // useLocation is now inside the Router context
+
+  const shouldHideNavbarAndFooter = 
+    location.pathname === '/alumnidirectory' || 
+    location.pathname === '/alumprofile';
+
   return (
-    <div className="flex flex-col min-h-screen">
-      <Router>
-        <Navbar />
-        <div className="flex-grow">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/alumnidirectory" element={<AlumniDirectory />} />
-            <Route path="/jobportal" element={<JobPortal />} />
-            <Route path="/events" element={<Events />} />
-            <Route path="/donation" element={<Donation />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/student-profile" element={<Student_profile_feed />} /> {/* New Route for Student_profile_feed */}
-          </Routes>
-        </div>
-        <Footer />
-      </Router>
-    </div>
+    <>
+      {!shouldHideNavbarAndFooter && <Navbar />}
+      <div className="flex-grow">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/alumnidirectory" element={<AlumniDirectory />} />
+          <Route path="/jobportal" element={<JobPortal />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/donation" element={<Donation />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/register-alumni" element={<AluminiRegistration />} />
+          <Route path="/register-college" element={<CollegeRegistration />} />
+          <Route path="/register-student" element={<StudentRegistration/>} />
+          <Route path="/alumni-profile-feed" element={<AlumniProfileFeed />} />
+          
+
+          <Route element={<SidebarLayout />}>
+            <Route path="/alumprofile" element={<AlumniProfile />} /> 
+          </Route>
+          <Route path="/signin" element={<Login />} /> 
+          <Route path="/register" element={<Register />} /> 
+        </Routes>
+      </div>
+      {!shouldHideNavbarAndFooter && <Footer />}
+    </>
   );
 }
 

@@ -48,7 +48,7 @@ const HeroPage = () => {
             Connect with fellow graduates and expand your professional network
           </p>
           <button className="bg-green-500 text-white w-[120px] h-[40px] mt-10 rounded-[3px]">
-            <Link to="/home">Get Started</Link>
+            <Link to="/login">Get Started</Link>
           </button>
         </div>
       </div>

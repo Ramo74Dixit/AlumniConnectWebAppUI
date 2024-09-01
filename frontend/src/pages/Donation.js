@@ -4,8 +4,8 @@ import imcard from '../assets/donation/ic1.png'; // Card image path
 import imbg2 from '../assets/donation/paymethod.png'; // Second image path
 
 const Donation = () => {
-  const [donationAmount, setDonationAmount] = useState(''); // State for the donation amount
-  const [donorName, setDonorName] = useState(''); // State for the donor's name
+  const [donationAmount, setDonationAmount] = useState('');
+  const [donorName, setDonorName] = useState('');
 
   const handleDonateNow = () => {
     if (donationAmount && donorName) {
@@ -16,18 +16,18 @@ const Donation = () => {
   };
 
   const handleAmountClick = (amount) => {
-    setDonationAmount(amount); // Set the clicked amount in the textarea
+    setDonationAmount(amount);
   };
 
   const handleAmountChange = (event) => {
     const value = event.target.value;
-    if (/^\d*$/.test(value)) { // Ensure only digits are allowed
-      setDonationAmount(value); // Update the state with user input
+    if (/^\d*$/.test(value)) {
+      setDonationAmount(value);
     }
   };
 
   const handleNameChange = (event) => {
-    setDonorName(event.target.value); // Update the state with the donor's name
+    setDonorName(event.target.value);
   };
 
   return (
@@ -87,7 +87,7 @@ const Donation = () => {
                 />
                 <p className="mt-4">Thank you for your donation!</p>
                 <button 
-                  className="bg-green-600 text-white py-2 px-4 rounded mt-4" 
+                  className="bg-green-600 text-white py-2 px-4 rounded w-full"
                   onClick={handleDonateNow}
                 >
                   Donate Now
@@ -95,43 +95,38 @@ const Donation = () => {
               </div>
             </div>
 
-            {/* Cards Section (right-aligned) */}
-            <div className="flex flex-col items-end gap-6 mt-10 mr-60 w-[300px]">  {/* Right side */}
+            {/* Cards Section */}
+            <div className="flex flex-col gap-6 w-full lg:w-1/3">
               {[
-                { title: "Card Title 1", desc: "This is a description of the card content. It can include text, links, or other elements.", img: imcard },
-                { title: "Card Title 2", desc: "This is another description of the card content. You can customize this as needed.", img: imcard },
-                { title: "Card Title 3", desc: "This is another description of the card content. You can customize this as needed.", img: imcard }
+                { title: "Card Title 1", desc: "This is a description of the card content.", img: imcard },
+                { title: "Card Title 2", desc: "This is another description of the card content.", img: imcard },
+                { title: "Card Title 3", desc: "This is another description of the card content.", img: imcard }
               ].map((card, index) => (
-                <div key={index} className="bg-white rounded-lg shadow-lg w-full text-center transition-transform transform hover:-translate-y-2">
-                  <img src={card.img} alt={`Image ${index + 1}`} className="w-full" />
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold mb-2">{card.title}</h3>
-                    <p className="text-gray-700 mb-4">{card.desc}</p>
-                    <a href="#" className="inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">
-                      Read More
-                    </a>
-                  </div>
+                <div key={index} className="bg-white rounded-lg shadow-lg text-center p-6">
+                  <img src={card.img} alt={`Image ${index + 1}`} className="w-full rounded-t-lg mb-4" />
+                  <h3 className="text-xl font-semibold mb-2">{card.title}</h3>
+                  <p className="text-gray-700 mb-4">{card.desc}</p>
+                  <a href="#" className="inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">
+                    Read More
+                  </a>
                 </div>
               ))}
             </div>
           </div>
-        </div>
 
-        {/* New Div for Additional Image */}
-        {
+          {/* New Div for Additional Image */}
           <div
-            className=" ml-10  max-w-3xl"
+            className="ml-10 max-w-3xl"
             style={{ backgroundColor: 'transparent' }}
           >
             <img
               src={imbg2}
               alt="Payment Methods"
               className="w-full object-cover -translate-y-60"
-              style={{ backgroundColor: 'transparent'}}
-
+              style={{ backgroundColor: 'transparent' }}
             />
           </div>
-        }
+        </div>
       </div>
     </>
   );
