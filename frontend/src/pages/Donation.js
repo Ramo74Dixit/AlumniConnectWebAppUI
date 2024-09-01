@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Navbar from '../components/Navbar'; // Assuming you have a Navbar component
 import imgbg from '../assets/donation/bg1.png'; // Background image path
 import imcard from '../assets/donation/ic1.png'; // Card image path
 import imbg2 from '../assets/donation/paymethod.png'; // Second image path
@@ -34,7 +33,7 @@ const Donation = () => {
   return (
     <>
       <div
-        className="flex flex-col min-h-screen"
+        className="flex flex-col min-h-screen mt-4"
         style={{
           backgroundImage: `url(${imgbg})`, // Set background image
           backgroundSize: 'contain',        // Cover the entire screen
@@ -42,14 +41,14 @@ const Donation = () => {
           backgroundRepeat: 'no-repeat',    // No repeat for the background image
         }}
       >
-        <div className="flex-grow bg-transparent"> {/* Main content div with transparent background */}
+        <div className="flex-grow bg-transparent mt-2"> {/* Main content div with transparent background */}
           <div className="flex justify-between gap-10">  {/* Align main content and cards section to the sides */}
             
             {/* Main Div Section */}
-            <div className="w-[600px] p-6 mt-20">
+            <div className="w-[600px] p-6 mt-10">
               <div className="mt-10 ml-10 bg-white bg-opacity-0 p-7 rounded-lg"> {/* Transparent background */}
                 <h1 className="text-3xl font-bold">Make the Donation</h1>
-                <textarea 
+                <input 
                   name="text" 
                   id="t1" 
                   className="w-full mt-4 p-2 border border-gray-300 rounded" 
@@ -70,7 +69,7 @@ const Donation = () => {
                 </p>
               </div>
 
-              <div className="mt-4 ml-10 bg-white bg-opacity-0 p-7 rounded-lg"> {/* Transparent background */}
+              <div className="mt-3 ml-10 bg-white bg-opacity-0 p-7 rounded-lg"> {/* Transparent background */}
                 <h1 className="text-3xl font-bold">Donation Details</h1>
                 <input
                   type="text"
@@ -121,13 +120,13 @@ const Donation = () => {
         {/* New Div for Additional Image */}
         {
           <div
-            className=" ml-10  max-w-2xl"
+            className=" ml-10  max-w-3xl"
             style={{ backgroundColor: 'transparent' }}
           >
             <img
               src={imbg2}
               alt="Payment Methods"
-              className="w-full object-cover -translate-y-40"
+              className="w-full object-cover -translate-y-60"
               style={{ backgroundColor: 'transparent'}}
 
             />

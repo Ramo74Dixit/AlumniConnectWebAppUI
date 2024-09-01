@@ -23,6 +23,7 @@ function App() {
             <Route path="/events" element={<Events />} />
             <Route path="/donation" element={<Donation />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/student-profile" element={<Student_profile_feed />} /> {/* New Route for Student_profile_feed */}
           </Routes>
         </div>
         <Footer />
