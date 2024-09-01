@@ -11,7 +11,7 @@ const AlumniProfile = () => {
   };
 
   return (
-    <div className="flex flex-col items-center mt-12">
+    <div className="flex flex-col items-center mt-12 bg-gray-900 text-gray-200 min-h-screen">
       <div className="mb-8">
         <input
           type="file"
@@ -28,7 +28,7 @@ const AlumniProfile = () => {
               className="w-40 h-40 rounded-full object-cover"
             />
           ) : (
-            <div className="w-40 h-40 bg-gray-200 rounded-full flex items-center justify-center">
+            <div className="w-40 h-40 bg-gray-700 rounded-full flex items-center justify-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -55,41 +55,41 @@ const AlumniProfile = () => {
           <input
             type="text"
             placeholder="First Name"
-            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full px-3 py-2 border border-gray-600 rounded-md shadow-sm bg-gray-800 text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
         </div>
         <div className="mb-4">
           <input
             type="text"
             placeholder="Last Name"
-            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full px-3 py-2 border border-gray-600 rounded-md shadow-sm bg-gray-800 text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
         </div>
         <div className="mb-4">
           <input
             type="text"
             placeholder="Current Position"
-            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full px-3 py-2 border border-gray-600 rounded-md shadow-sm bg-gray-800 text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
         </div>
         <div className="mb-4">
           <input
             type="text"
             placeholder="Current Company"
-            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full px-3 py-2 border border-gray-600 rounded-md shadow-sm bg-gray-800 text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
         </div>
         <div className="mb-6">
           <input
             type="text"
             placeholder="Gender"
-            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full px-3 py-2 border border-gray-600 rounded-md shadow-sm bg-gray-800 text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
         </div>
         <div className="mb-4">
           <button
             type="button"
-            className="w-full flex justify-center px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="w-full flex justify-center px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -111,7 +111,7 @@ const AlumniProfile = () => {
         <div>
           <button
             type="button"
-            className="w-full px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="w-full px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           >
             Next
           </button>

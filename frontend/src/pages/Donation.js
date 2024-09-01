@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import imcard from '../assets/donation/ic1.png'; // Card image path
 import imbg2 from '../assets/donation/paymethod.png'; // Second image path
 
 const Donation = () => {
@@ -30,76 +29,65 @@ const Donation = () => {
   };
 
   return (
-    <>
-      <div className="flex flex-col min-h-screen bg-gradient-to-r from-blue-200 to-green-200">
-        <div className="flex flex-col lg:flex-row justify-center items-center gap-10 p-6 flex-grow">
-          
-          {/* Main Donation Section */}
-          <div className="w-full lg:w-1/2 p-6 bg-white shadow-lg rounded-lg">
-            <h1 className="text-3xl font-bold mb-6 text-center">Make a Donation</h1>
-            <textarea 
-              name="text" 
-              id="t1" 
-              className="w-full p-3 border border-gray-300 rounded mb-4" 
-              placeholder="Enter donation amount"  
-              value={donationAmount}
-              onChange={handleAmountChange}
-            />
-            <div className="flex justify-around mb-4">
-              {[50, 100, 150, 200].map((amount, index) => (
-                <button 
-                  key={index} 
-                  className="bg-blue-500 text-white py-2 px-4 rounded" 
-                  onClick={() => handleAmountClick(amount)}
-                >
-                  ${amount}
-                </button>
-              ))}
-            </div>
-            <input
-              type="text"
-              placeholder="Enter your name"
-              value={donorName}
-              onChange={handleNameChange}
-              className="w-full p-3 border border-gray-300 rounded mb-4"
-            />
-            <input
-              type="text"
-              placeholder="Donation Amount"
-              value={donationAmount}
-              readOnly
-              className="w-full p-3 border border-gray-300 rounded mb-4"
-            />
-            <p className="text-center mb-4">Thank you for your donation!</p>
+    <div className="flex justify-center items-center min-h-screen bg-gray-900 p-6">
+      
+      {/* Main Donation Section */}
+      <div className="w-full max-w-lg p-6 bg-gray-800 shadow-lg rounded-lg">
+        <h1 className="text-3xl font-bold mb-6 text-center text-white">Make a Donation</h1>
+        
+        {/* Donation Amount Input */}
+        <input 
+          type="text" 
+          className="w-full p-3 mb-4 bg-gray-700 text-white border border-gray-600 rounded placeholder-gray-400"
+          placeholder="Enter donation amount"  
+          value={donationAmount}
+          onChange={handleAmountChange}
+        />
+        
+        {/* Quick Amount Buttons */}
+        <div className="flex justify-around mb-4">
+          {[50, 100, 150, 200].map((amount, index) => (
             <button 
-              className="bg-green-600 text-white py-2 px-4 rounded w-full"
-              onClick={handleDonateNow}
+              key={index} 
+              className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300"
+              onClick={() => handleAmountClick(amount)}
             >
-              Donate Now
+              ${amount}
             </button>
-          </div>
-          
-          {/* Cards Section */}
-          <div className="flex flex-col gap-6 w-full lg:w-1/3">
-            {[
-              { title: "Card Title 1", desc: "This is a description of the card content.", img: imcard },
-              { title: "Card Title 2", desc: "This is another description of the card content.", img: imcard },
-              { title: "Card Title 3", desc: "This is another description of the card content.", img: imcard }
-            ].map((card, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-lg text-center p-6">
-                <img src={card.img} alt={`Image ${index + 1}`} className="w-full rounded-t-lg mb-4" />
-                <h3 className="text-xl font-semibold mb-2">{card.title}</h3>
-                <p className="text-gray-700 mb-4">{card.desc}</p>
-                <a href="#" className="inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">
-                  Read More
-                </a>
-              </div>
-            ))}
-          </div>
+          ))}
         </div>
-
-        {/* Additional Image Section */}
-        <div className="p-6">
+        
+        {/* Donor Name Input */}
+        <input
+          type="text"
+          placeholder="Enter your name"
+          value={donorName}
+          onChange={handleNameChange}
+          className="w-full p-3 mb-4 bg-gray-700 text-white border border-gray-600 rounded placeholder-gray-400"
+        />
+        
+        {/* Display Donation Amount (Read-Only) */}
+        <input
+          type="text"
+          placeholder="Donation Amount"
+          value={donationAmount}
+          readOnly
+          className="w-full p-3 mb-4 bg-gray-600 text-white border border-gray-500 rounded"
+        />
+        
+        {/* Thank You Message */}
+        <p className="text-center mb-4 text-lg font-medium text-gray-300">Thank you for your donation!</p>
+        
+        {/* Donate Now Button */}
+        <button 
+          className="w-full bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-300"
+          onClick={handleDonateNow}
+        >
+          Donate Now
+        </button>
+        
+        {/* Payment Methods Image */}
+        <div className="mt-8">
           <img
             src={imbg2}
             alt="Payment Methods"
@@ -107,7 +95,8 @@ const Donation = () => {
           />
         </div>
       </div>
-    </>
+      
+    </div>
   );
 };
 
