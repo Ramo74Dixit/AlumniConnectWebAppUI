@@ -1,10 +1,14 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { HiMenu, HiX } from "react-icons/hi";
+import { AuthContext } from "../AuthContext"; // Import AuthContext
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [dropDown, setDropDown] = useState(false);
+  const navigate = useNavigate();
+
+  const { isAuthenticated, userRole, logout } = useContext(AuthContext); // Use AuthContext
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -16,6 +20,24 @@ const Navbar = () => {
 
   const closeDropdown = () => {
     setDropDown(false);
+  };
+
+  const handleLogout = () => {
+    logout();
+    // Optionally navigate to the homepage or login page
+    navigate('/');
+  };
+
+  const handleProfileUpdate = (role) => {
+    if (role === "alumnilist") {
+      navigate("/register-alumni");
+    } else if (role === "students") {
+      navigate("/register-student");
+    } else if (role === "colleges") {
+      navigate("/register-college");
+    } else {
+      console.error("Unknown user role:", role);
+    }
   };
 
   return (
@@ -98,7 +120,7 @@ const Navbar = () => {
       <div className="hidden md:flex space-x-4 relative z-50">
         <button
           className="border border-green-600 px-4 py-2 rounded text-green-600 hover:shadow-2xl shadow-green-800"
-          onClick={toggleDrop}
+          onClick={() => handleProfileUpdate(userRole)}
         >
           Update Profile
         </button>
@@ -127,9 +149,18 @@ const Navbar = () => {
             </Link>
           </div>
         )}
-        <button className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
-          <Link to="/signin">Signin</Link>
-        </button>
+        {isAuthenticated ? (
+          <button
+            className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition"
+            onClick={handleLogout}
+          >
+            Logout
+          </button>
+        ) : (
+          <button className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
+            <Link to="/signin">Signin</Link>
+          </button>
+        )}
       </div>
     </div>
   );

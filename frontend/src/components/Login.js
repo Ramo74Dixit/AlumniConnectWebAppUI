@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaUserGraduate, FaSchool, FaUser } from 'react-icons/fa';
+import { AuthContext } from '../AuthContext'; // Import AuthContext
 
 const roles = {
   alumnilist: { name: 'Alumni', icon: <FaUserGraduate /> },
@@ -16,6 +17,7 @@ const Login = () => {
   });
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext); // Use AuthContext
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -39,8 +41,13 @@ const Login = () => {
 
       if (response.ok) {
         const data = await response.json();
-        alert('Login successful!'); // Basic notification for login success
-        navigate(`/`); // Navigate to the appropriate dashboard
+        alert('Login successful!');
+        
+        // Call the login function from AuthContext with the current role
+        login(formData.role);
+        
+        localStorage.setItem("userData", JSON.stringify(data));
+        navigate(`/`);
       } else {
         const errorData = await response.json();
         setError(`Error: ${errorData.message}`);
@@ -53,15 +60,15 @@ const Login = () => {
 
   const handleRoleChange = (role) => {
     setFormData({ ...formData, role });
-    setError(''); // Clear error when changing role
+    setError('');
   };
 
   const handleForgotPassword = () => {
-    navigate('/forgot-password'); // Redirect to forgot password page
+    navigate('/forgot-password');
   };
 
   const handleRegister = () => {
-    navigate('/register'); // Redirect to registration page
+    navigate('/register');
   };
 
   return (
