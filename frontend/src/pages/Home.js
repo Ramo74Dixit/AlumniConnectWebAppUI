@@ -152,9 +152,18 @@ const HeroPage = () => {
             />
           </div>
         </div>
-    <div className="flex w-full h-[37vw] space-x-4 bg-slider">
-  <TopAlumlist />
-</div>
+      </div>
+
+      <div className="flex w-full h-[30vw] space-x-4">
+        {profiles.map((profile, index) => (
+          <TopAlumlist
+            key={index}
+            image={profile.image}
+            fullName={profile.fullName}
+            title={profile.title}
+            tagline={profile.tagline}
+          />
+        ))}
       </div>
       <button className="bg-orange-500 mb-4 w-[15vw] h-[8vh] rounded-full text-center text-white font-bold text-xl mt-8 ml-[42vw] hover:bg-white border border-4 border-orange-500 hover:text-orange-500">
         <Link to="/alumnidirectory">Explore More</Link>
