@@ -42,6 +42,7 @@ const Navbar = () => {
 
   return (
     <div className=" sticky top-0 w-full h-[12vh]  bg-blue-950  shadow-lg flex items-center justify-between px-4 md:px-10 z-50">
+    <div className="w-full h-[12vh]  bg-blue-950  shadow-lg flex items-center justify-between px-4 md:px-10 z-50 relative">
       <div className="flex items-center">
         <img
           src="/logo.png"
