@@ -1,40 +1,39 @@
 import React, { createContext, useState, useEffect } from 'react';
-
-// Create the AuthContext
 export const AuthContext = createContext();
-
-// AuthProvider component that wraps around the app
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userRole, setUserRole] = useState(null);
-
-  // Check localStorage to see if the user is already logged in and their role
+  const [userId, setUserId] = useState(null);
   useEffect(() => {
-    const authStatus = localStorage.getItem("isAuthenticated");
-    const storedUserRole = localStorage.getItem("userRole");
+    const authStatus = localStorage.getItem('isAuthenticated');
+    const storedUserRole = localStorage.getItem('userRole');
+    const storedUserId = localStorage.getItem('userId');
 
-    if (authStatus === "true") {
+    if (authStatus === 'true' && storedUserId) {
       setIsAuthenticated(true);
       setUserRole(storedUserRole);
+      setUserId(storedUserId);
     }
   }, []);
-
-  const login = (role) => {
-    localStorage.setItem("isAuthenticated", "true");
-    localStorage.setItem("userRole", role);
+  const login = (role, id) => {
+    localStorage.setItem('isAuthenticated', 'true');
+    localStorage.setItem('userRole', role);
+    localStorage.setItem('userId', id);
     setIsAuthenticated(true);
     setUserRole(role);
+    setUserId(id);
   };
-
   const logout = () => {
-    localStorage.removeItem("isAuthenticated");
-    localStorage.removeItem("userRole");
+    localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('userRole');
+    localStorage.removeItem('userId');
     setIsAuthenticated(false);
     setUserRole(null);
+    setUserId(null);
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, userRole, login, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, userRole, userId, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

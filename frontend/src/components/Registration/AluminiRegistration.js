@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { AuthContext } from "../../AuthContext"; // Import AuthContext
 import bg from "../../assets/Image6.png";
 import img from "../../assets/Image7.png";
 
 const AluminiRegistration = () => {
-  // Generate years for the batch dropdown
+  const { userId } = useContext(AuthContext); // Use userId from AuthContext
+
   const currentYear = new Date().getFullYear();
   const startYear = 1990;
   const years = Array.from({ length: currentYear - startYear + 1 }, (_, i) => startYear + i);
 
-  // State for form fields
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -20,7 +21,6 @@ const AluminiRegistration = () => {
     termsAccepted: false,
   });
 
-  // State for validation errors
   const [errors, setErrors] = useState({
     firstName: '',
     lastName: '',
@@ -32,7 +32,6 @@ const AluminiRegistration = () => {
     termsAccepted: '',
   });
 
-  // Handle input changes
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData({
@@ -41,7 +40,6 @@ const AluminiRegistration = () => {
     });
   };
 
-  // Validate the form
   const validateForm = () => {
     let formIsValid = true;
     let newErrors = { firstName: '', lastName: '', collegeName: '', branch: '', batch: '', currentCompany: '', position: '', termsAccepted: '' };
@@ -83,15 +81,40 @@ const AluminiRegistration = () => {
     return formIsValid;
   };
 
-  // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      // Handle successful form submission here
-      console.log('Form Data:', formData);
+      console.log('User ID:', userId); // Debugging step
+  
+      if (!userId) {
+        console.error('User ID is null. Redirecting to login.');
+        // Handle the error, redirect to login, or show an error message
+        return;
+      }
+  
+      try {
+        const response = await fetch(`http://localhost:5000/update/alumni/${userId}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+  
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.message || 'Something went wrong');
+        }
+  
+        const data = await response.json();
+        console.log('Profile updated successfully:', data);
+        // Handle successful profile update here (e.g., navigate to another page or show success message)
+      } catch (error) {
+        console.error('Error updating profile:', error.message);
+      }
     }
   };
-
+  
   return (
     <div
       className="min-h-screen min-w-screen bg-cover bg-no-repeat bg-center flex flex-row"
@@ -150,7 +173,6 @@ const AluminiRegistration = () => {
                 className="w-full p-1 bg-[#f3f4f6] border rounded"
               >
                 <option value="">Select College</option>
-                {/* Replace with actual options */}
                 <option value="College A">College A</option>
                 <option value="College B">College B</option>
               </select>
@@ -166,7 +188,6 @@ const AluminiRegistration = () => {
                 className="w-full p-1 bg-[#f3f4f6] border rounded"
               >
                 <option value="">Select Branch</option>
-                {/* Replace with actual options */}
                 <option value="Branch A">Branch A</option>
                 <option value="Branch B">Branch B</option>
               </select>

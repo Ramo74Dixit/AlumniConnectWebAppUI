@@ -1,7 +1,8 @@
+// src/components/Login.js
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaUserGraduate, FaSchool, FaUser } from 'react-icons/fa';
-import { AuthContext } from '../AuthContext'; // Import AuthContext
+import { AuthContext } from '../AuthContext';
 
 const roles = {
   alumnilist: { name: 'Alumni', icon: <FaUserGraduate /> },
@@ -17,11 +18,16 @@ const Login = () => {
   });
   const [error, setError] = useState('');
   const navigate = useNavigate();
-  const { login } = useContext(AuthContext); // Use AuthContext
+  const { login } = useContext(AuthContext);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+  };
+
+  const handleRoleChange = (role) => {
+    setFormData({ ...formData, role });
+    setError('');
   };
 
   const handleSubmit = async (e) => {
@@ -42,12 +48,25 @@ const Login = () => {
       if (response.ok) {
         const data = await response.json();
         alert('Login successful!');
-        
-        // Call the login function from AuthContext with the current role
-        login(formData.role);
-        
-        localStorage.setItem("userData", JSON.stringify(data));
-        navigate(`/`);
+
+        // Extract userId based on role
+        let userId;
+        if (formData.role === 'alumnilist') {
+          userId = data.alumni._id;
+        } else if (formData.role === 'colleges') {
+          userId = data.college._id;
+        } else if (formData.role === 'students') {
+          userId = data.student._id;
+        }
+
+        if (userId) {
+          // Call the login function from AuthContext with role and userId
+          login(formData.role, userId);
+          localStorage.setItem('userData', JSON.stringify(data));
+          navigate('/');
+        } else {
+          setError('Invalid user data received from server.');
+        }
       } else {
         const errorData = await response.json();
         setError(`Error: ${errorData.message}`);
@@ -56,11 +75,6 @@ const Login = () => {
       console.error('Error:', error);
       setError('An error occurred. Please try again.');
     }
-  };
-
-  const handleRoleChange = (role) => {
-    setFormData({ ...formData, role });
-    setError('');
   };
 
   const handleForgotPassword = () => {
@@ -75,7 +89,7 @@ const Login = () => {
     <div className="min-h-screen bg-[#f5f5f5] flex justify-center items-center">
       <div className="w-full max-w-md bg-white p-8 border border-[#8c8c8c] rounded-lg shadow-lg">
         <h2 className="text-[#326C85] text-2xl font-bold text-center mb-6">Login</h2>
-        
+
         {/* Role Toggle */}
         <div className="flex justify-around mb-6">
           {Object.keys(roles).map((key) => (
