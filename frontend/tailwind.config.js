@@ -5,38 +5,6 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          light: '#4f46e5',
-          DEFAULT: '#4338ca',
-          dark: '#3730a3',
-        },
-        secondary: {
-          light: '#10b981',
-          DEFAULT: '#059669',
-          dark: '#047857',
-        },
-        accent: {
-          light: '#f59e0b',
-          DEFAULT: '#d97706',
-          dark: '#b45309',
-        },
-        background: {
-          DEFAULT: '#1f2937',
-          light: '#374151',
-        },
-        text: {
-          light: '#f3f4f6',
-          DEFAULT: '#e5e7eb',
-          dark: '#d1d5db',
-        },
-      },
-      keyframes: {
-        slide: {
-          '0%': { transform: 'translateX(0%)' },
-          '100%': { transform: 'translateX(-50%)' },
-        },
-      },
-      animation: {
-        slide: 'slide 30s linear infinite',
           light: '#4f46e5', // Indigo-600
           DEFAULT: '#4338ca', // Indigo-700
           dark: '#3730a3', // Indigo-800
@@ -62,6 +30,10 @@ module.exports = {
         },
       },
       keyframes: {
+        slide: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
         moveGlow: {
           '0%, 100%': { transform: 'translateY(0)', boxShadow: '0 0 10px rgba(0, 0, 0, 0)' },
           '50%': { transform: 'translateY(-5px)', boxShadow: '0 0 20px rgba(79, 70, 229, 0.7)' }, // primary.light
@@ -72,10 +44,11 @@ module.exports = {
         },
         glow: {
           '0%, 100%': { boxShadow: '0 0 10px rgba(0, 0, 0, 0)' },
-          '50%': { boxShadow: '0 0 20px rgba(79, 70, 229, 0.7)' },
+          '50%': { boxShadow: '0 0 20px rgba(79, 70, 229, 0.7)' }, // primary.light
         },
       },
       animation: {
+        slide: 'slide 30s linear infinite',
         moveGlow: 'moveGlow 2s ease-in-out infinite',
         fadeInUp: 'fadeInUp 1s ease-out forwards',
         glow: 'glow 1.5s ease-in-out infinite',
@@ -87,4 +60,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
+};
