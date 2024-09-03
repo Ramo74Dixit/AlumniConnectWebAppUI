@@ -1,9 +1,3 @@
-/* Import Swiper CSS directly in your JavaScript file instead */
-/* @import 'swiper/css'; */
-/* @import 'swiper/css/autoplay'; */
-/* @import 'swiper/css/pagination'; */
-
-/* Basic App Styling */
 .App {
   text-align: center;
 }
@@ -13,7 +7,6 @@
   pointer-events: none;
 }
 
-/* Spinning animation for the logo with a reduced motion preference check */
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -31,14 +24,10 @@
   color: white;
 }
 
-/* Styling for links */
 .App-link {
   color: #61dafb;
-  display: inline-block;
-  animation: bounce 2s infinite;
 }
 
-/* Keyframes for logo spinning animation */
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -84,7 +73,7 @@
 
 
 .bg-slider {
-  background-image: url('../public/slider.png');
+  /* background-image: url('../public/slider.png'); */
   background-size: cover;
   background-position: center;
 }

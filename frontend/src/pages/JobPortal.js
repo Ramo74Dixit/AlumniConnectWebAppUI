@@ -1,6 +1,5 @@
 import React from "react";
 // import img from "../assets/model.png";
-import img1 from "../assets/postjob.png";
 import img2 from "../assets/bgjob.png";
 import img3 from "../assets/postjob2.png"
 import JobSection from "./JobSection";
