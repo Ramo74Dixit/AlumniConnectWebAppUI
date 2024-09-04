@@ -41,17 +41,15 @@ const Navbar = () => {
   };
 
   return (
-    <div className=" sticky top-0 w-full h-[12vh]  bg-blue-950  shadow-lg flex items-center justify-between px-4 md:px-10 z-50">
-      <div className="flex items-center">
-        <img
-          src="/logo.png"
-          className="w-[20vh] h-[10vh] md:w-[30vh] md:h-[12vh]"
-          alt="Logo"
-        />
-        <div className="font-bold text-2xl text-white md:text-xl ml-0 md:ml-0">
-          AlumniConnect
-        </div>
-      </div>
+    <div className=" sticky top-0 w-[100vw] h-[12vh]  bg-blue-950  shadow-lg flex items-center justify-between px-4 md:px-10 z-50">
+     <div className="flex items-center">
+  <img
+    src="/logo.png"
+    className="w-[7cm] h-[4cm] bg-transparent"
+    alt="Logo"
+  />
+</div>
+
 
       {/* Mobile Menu Toggle */}
       <div className="md:hidden">
