@@ -16,13 +16,14 @@ import StudentRegistration from "./components/Registration/StudentRegistration";
 import CollegeRegistration from "./components/Registration/CollegeRegistration";
 import Login from "./components/Login"
 import Register from './components/Register'
-
+import AlumniProfileFeed from './pages/AlumniProfileFeed';
 function App() {
   const location = useLocation(); // useLocation is now inside the Router context
 
   const shouldHideNavbarAndFooter = 
     location.pathname === '/alumnidirectory' || 
-    location.pathname === '/alumprofile';
+    location.pathname === '/alumprofile' ||
+    location.pathname === '/feed';
 
   return (
     <>
@@ -41,6 +42,7 @@ function App() {
 
           <Route element={<SidebarLayout />}>
             <Route path="/alumprofile" element={<AlumniProfile />} /> 
+            <Route path="/feed" element={<AlumniProfileFeed />} /> 
           </Route>
           <Route path="/signin" element={<Login />} /> 
           <Route path="/register" element={<Register />} /> 
