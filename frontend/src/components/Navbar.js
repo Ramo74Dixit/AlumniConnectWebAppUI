@@ -41,14 +41,14 @@ const Navbar = () => {
   };
 
   return (
-    <div className="w-full h-[12vh] border shadow-lg flex items-center justify-between px-4 md:px-10 z-50 relative">
-      <div className="flex items-center">
+    <div className="w-full h-[12vh]  bg-blue-950  shadow-lg flex items-center justify-between px-4 md:px-10 z-50 relative">
+      <div className="flex items-center space-x-4">
         <img
-          src="/logo.png"
-          className="w-[20vh] h-[10vh] md:w-[30vh] md:h-[12vh]"
+          src="/logo.png" // Make sure this path points to the correct location of your logo
+          className="w-[20vh] h-[10vh] md:w-[30vh] md:h-[12vh]" // Responsive sizing
           alt="Logo"
         />
-        <div className="font-bold text-2xl md:text-xl ml-0 md:ml-0">
+        <div className="font-bold text-2xl text-white md:text-xl ml-0 md:ml-0">
           AlumniConnect
         </div>
       </div>
@@ -61,7 +61,7 @@ const Navbar = () => {
       </div>
 
       {/* Desktop Menu */}
-      <div className="hidden md:flex space-x-4 font-normal text-[#8A8A8A] text-lg">
+      <div className="hidden md:flex space-x-4 font-normal text-white bg-transparent text-lg">
         <Link to="/" className="relative px-1 py-2 group">
           Home
           <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-green-500 transition-all duration-300 group-hover:w-full"></span>

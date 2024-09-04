@@ -39,7 +39,7 @@ function App() {
           <Route path="/register-alumni" element={<AluminiRegistration />} />
           <Route path="/register-college" element={<CollegeRegistration />} />
           <Route path="/register-student" element={<StudentRegistration/>} />
-          <Route path="/alumni-profile-feed" element={<AlumniProfileFeed />} />
+          <Route path="/AlumniProfileFeed" element={<AlumniProfileFeed />} />
           
 
           <Route element={<SidebarLayout />}>

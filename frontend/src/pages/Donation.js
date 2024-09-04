@@ -31,7 +31,7 @@ const Donation = () => {
   };
 
   return (
-    <>
+    <div>
       <div
         className="flex flex-col min-h-screen mt-4"
         style={{
@@ -128,7 +128,8 @@ const Donation = () => {
           </div>
         </div>
       </div>
-    </>
+      
+    </div>
   );
 };
 
