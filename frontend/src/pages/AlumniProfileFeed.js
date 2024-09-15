@@ -12,13 +12,11 @@ const AlumniProfileFeed = () => {
   const rowsPerPage = 10;
 
   useEffect(() => {
-    // Set the data directly from the imported JSON file
     setData(alumniData);
-    setFilteredData(alumniData); // Initialize filtered data
+    setFilteredData(alumniData);
   }, []);
 
   useEffect(() => {
-    // Filter data based on selected filters
     let tempData = data;
 
     if (selectedRole) {
@@ -34,34 +32,29 @@ const AlumniProfileFeed = () => {
     }
 
     setFilteredData(tempData);
-    setCurrentPage(1); // Reset to the first page when filters change
+    setCurrentPage(1);
   }, [selectedRole, selectedSalary, selectedLocation, data]);
 
-  // Calculate indices for slicing the data
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
   const currentRows = filteredData.slice(indexOfFirstRow, indexOfLastRow);
 
-  // Calculate total pages
   const totalPages = Math.ceil(filteredData.length / rowsPerPage);
 
-  // Determine which page numbers to display
   const pageNumbers = [];
   for (let i = Math.max(1, currentPage - 1); i <= Math.min(totalPages, currentPage + 1); i++) {
     pageNumbers.push(i);
   }
 
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Include the navbar component */}
+    <div className="flex flex-col min-h-screen bg-gray-900 text-gray-200">
       <SideAlumNavbar />
 
-      <main className="flex-grow container mx-auto p-4">
-        {/* Filters Section */}
-        <div className="flex justify-between mb-4">
-          <select 
-            className="border rounded p-2" 
-            value={selectedRole} 
+      <main className="flex-grow container mx-auto p-6">
+        <div className="flex justify-between mb-6">
+          <select
+            className="border rounded p-2 bg-gray-800 text-gray-200"
+            value={selectedRole}
             onChange={e => setSelectedRole(e.target.value)}
           >
             <option value="">Job Role</option>
@@ -69,9 +62,9 @@ const AlumniProfileFeed = () => {
               <option key={index} value={role}>{role}</option>
             ))}
           </select>
-          <select 
-            className="border rounded p-2" 
-            value={selectedSalary} 
+          <select
+            className="border rounded p-2 bg-gray-800 text-gray-200"
+            value={selectedSalary}
             onChange={e => setSelectedSalary(e.target.value)}
           >
             <option value="">Salary</option>
@@ -79,9 +72,9 @@ const AlumniProfileFeed = () => {
               <option key={index} value={salary}>{salary}</option>
             ))}
           </select>
-          <select 
-            className="border rounded p-2" 
-            value={selectedLocation} 
+          <select
+            className="border rounded p-2 bg-gray-800 text-gray-200"
+            value={selectedLocation}
             onChange={e => setSelectedLocation(e.target.value)}
           >
             <option value="">Location</option>
@@ -91,43 +84,42 @@ const AlumniProfileFeed = () => {
           </select>
         </div>
 
-        {/* Table Section */}
         <div className="overflow-x-auto">
-          <table className="min-w-full bg-white border border-gray-200">
+          <table className="min-w-full bg-gray-800 border border-gray-700">
             <thead>
-              <tr className="bg-gray-100 text-left">
-                <th className="p-4 border">Date</th>
-                <th className="p-4 border">Profile</th>
-                <th className="p-4 border">Description & Salary</th>
-                <th className="p-4 border">Location</th>
-                <th className="p-4 border">Job Role</th>
-                <th className="p-4 border">Ping</th>
+              <tr className="bg-gray-700 text-left">
+                <th className="p-4 border border-gray-600">Date</th>
+                <th className="p-4 border border-gray-600">Profile</th>
+                <th className="p-4 border border-gray-600">Description & Salary</th>
+                <th className="p-4 border border-gray-600">Location</th>
+                <th className="p-4 border border-gray-600">Job Role</th>
+                <th className="p-4 border border-gray-600">Ping</th>
               </tr>
             </thead>
             <tbody>
               {currentRows.map((row, i) => (
-                <tr key={i} className="border-b">
-                  <td className="p-4 border">{row.date}</td>
-                  <td className="p-4 border flex items-center">
+                <tr key={i} className="border-b border-gray-700 hover:bg-gray-700">
+                  <td className="p-4 border border-gray-600">{row.date}</td>
+                  <td className="p-4 border border-gray-600 flex items-center">
                     <img
                       src="https://via.placeholder.com/32"
                       alt="Profile"
-                      className="rounded-full w-8 h-8 mr-2"
+                      className="rounded-full w-8 h-8 mr-2 border-2 border-green-500"
                     />
                     {row.username}
                   </td>
-                  <td className="p-4 border">
+                  <td className="p-4 border border-gray-600">
                     {row.description} <br />
-                    <strong>Salary:</strong> {row.salary}
+                    <strong className="text-green-400">Salary:</strong> {row.salary}
                   </td>
-                  <td className="p-4 border">{row.location}</td>
-                  <td className="p-4 border">
-                    <span className="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs">
+                  <td className="p-4 border border-gray-600">{row.location}</td>
+                  <td className="p-4 border border-gray-600">
+                    <span className="bg-green-500 text-gray-900 px-2 py-1 rounded-full text-xs">
                       {row.jobRole}
                     </span>
                   </td>
-                  <td className="p-4 border">
-                    <button className="bg-green-600 text-white px-4 py-2 rounded">
+                  <td className="p-4 border border-gray-600">
+                    <button className="bg-green-600 text-gray-900 px-4 py-2 rounded hover:bg-green-700">
                       Ping
                     </button>
                   </td>
@@ -137,10 +129,9 @@ const AlumniProfileFeed = () => {
           </table>
         </div>
 
-        {/* Pagination */}
-        <div className="flex justify-center mt-4">
+        <div className="flex justify-center mt-6">
           <button
-            className="px-3 py-1 mx-1 border rounded bg-white"
+            className="px-3 py-1 mx-1 border rounded bg-gray-800 text-gray-200 hover:bg-gray-700"
             onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
           >
@@ -150,15 +141,15 @@ const AlumniProfileFeed = () => {
             <button
               key={number}
               className={`px-3 py-1 mx-1 border rounded ${
-                currentPage === number ? 'bg-gray-200' : 'bg-white'
-              }`}
+                currentPage === number ? 'bg-green-500 text-gray-900' : 'bg-gray-800 text-gray-200'
+              } hover:bg-gray-700`}
               onClick={() => setCurrentPage(number)}
             >
               {number}
             </button>
           ))}
           <button
-            className="px-3 py-1 mx-1 border rounded bg-white"
+            className="px-3 py-1 mx-1 border rounded bg-gray-800 text-gray-200 hover:bg-gray-700"
             onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
             disabled={currentPage === totalPages}
           >
@@ -166,8 +157,6 @@ const AlumniProfileFeed = () => {
           </button>
         </div>
       </main>
-
-      {/* Include the footer component */}
     </div>
   );
 };

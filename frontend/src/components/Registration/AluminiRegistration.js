@@ -117,7 +117,7 @@ const AluminiRegistration = () => {
   
   return (
     <div
-      className="min-h-screen min-w-screen bg-cover bg-no-repeat bg-center flex flex-row"
+      className="min-h-screen min-w-screen w-[100vw] bg-cover bg-no-repeat bg-center flex flex-row"
       style={{ backgroundImage: `url(${bg})` }}
     >
       <div className="w-1/2">

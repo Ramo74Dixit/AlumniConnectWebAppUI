@@ -5,11 +5,11 @@ import img3 from "../assets/postjob2.png"
 import JobSection from "./JobSection";
 const JobPortal = () => {
   return (
-    <div>
-      <div className="flex bg-cover "
+    <div className="w-[100vw]">
+      <div className="flex bg-cover"
        style={{
         backgroundImage: `url(${img2})`,
-        height:"90vh",
+        height:"85vh",
         width:"",
         backgroundRepeat: "no-repeat",
       }}
@@ -45,7 +45,7 @@ const JobPortal = () => {
       <div className="flex  bg-cover"
       style={{
         backgroundImage: `url(${img3})`,
-        height:"70vh",
+        height:"60vh",
         width:"",
         backgroundRepeat: "no-repeat",
       }}

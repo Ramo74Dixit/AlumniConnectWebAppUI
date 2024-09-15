@@ -11,8 +11,8 @@ const AlumniProfile = () => {
   };
 
   return (
-    <div className="flex flex-col items-center mt-12 bg-gray-900 text-gray-200 min-h-screen">
-      <div className="mb-8">
+    <div className="flex flex-col items-center  bg-gray-900 text-gray-200 min-h-screen">
+      <div className="mb-8 mt-3">
         <input
           type="file"
           accept="image/*"
