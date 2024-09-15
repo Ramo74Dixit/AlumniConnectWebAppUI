@@ -30,15 +30,14 @@ const Donation = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-900 p-6">
-      
-      {/* Main Donation Section */}
-      <div className="w-full max-w-lg p-6 bg-gray-800 shadow-lg rounded-lg">
+      {/* Main Donation Section with Intense Glow Effect */}
+      <div className="w-full max-w-lg p-6 bg-white bg-opacity-10 shadow-2xl rounded-lg backdrop-filter backdrop-blur-lg border border-white/20 ring-4 ring-cyan-500 shadow-cyan-500/80">
         <h1 className="text-3xl font-bold mb-6 text-center text-white">Make a Donation</h1>
         
         {/* Donation Amount Input */}
         <input 
           type="text" 
-          className="w-full p-3 mb-4 bg-gray-700 text-white border border-gray-600 rounded placeholder-gray-400"
+          className="w-full p-3 mb-4 bg-white bg-opacity-20 text-white border border-white/20 rounded placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition-all duration-500 hover:ring-2 hover:ring-cyan-400 hover:shadow-lg hover:shadow-cyan-500/50"
           placeholder="Enter donation amount"  
           value={donationAmount}
           onChange={handleAmountChange}
@@ -49,7 +48,7 @@ const Donation = () => {
           {[50, 100, 150, 200].map((amount, index) => (
             <button 
               key={index} 
-              className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300"
+              className="bg-blue-600 text-white py-2 px-4 rounded transition-all duration-500 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/50 focus:outline-none focus:ring-2 focus:ring-blue-400"
               onClick={() => handleAmountClick(amount)}
             >
               ${amount}
@@ -63,7 +62,7 @@ const Donation = () => {
           placeholder="Enter your name"
           value={donorName}
           onChange={handleNameChange}
-          className="w-full p-3 mb-4 bg-gray-700 text-white border border-gray-600 rounded placeholder-gray-400"
+          className="w-full p-3 mb-4 bg-white bg-opacity-20 text-white border border-white/20 rounded placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition-all duration-500 hover:ring-2 hover:ring-cyan-400 hover:shadow-lg hover:shadow-cyan-500/50"
         />
         
         {/* Display Donation Amount (Read-Only) */}
@@ -72,7 +71,7 @@ const Donation = () => {
           placeholder="Donation Amount"
           value={donationAmount}
           readOnly
-          className="w-full p-3 mb-4 bg-gray-600 text-white border border-gray-500 rounded"
+          className="w-full p-3 mb-4 bg-white bg-opacity-20 text-white border border-white/20 rounded transition-all duration-500 hover:ring-2 hover:ring-cyan-400 hover:shadow-lg hover:shadow-cyan-500/50"
         />
         
         {/* Thank You Message */}
@@ -80,7 +79,7 @@ const Donation = () => {
         
         {/* Donate Now Button */}
         <button 
-          className="w-full bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-300"
+          className="w-full bg-green-600 text-white py-2 px-4 rounded transition-all duration-500 hover:bg-green-700 hover:shadow-lg hover:shadow-green-500/50 focus:outline-none focus:ring-2 focus:ring-green-400"
           onClick={handleDonateNow}
         >
           Donate Now
@@ -95,7 +94,6 @@ const Donation = () => {
           />
         </div>
       </div>
-      
     </div>
   );
 };
