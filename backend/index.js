@@ -37,30 +37,30 @@ const collegeSchema = new mongoose.Schema({
   name: String,
   email: String,
   password: String,
-  addInfo:{
-    collegeName:String,
-    collegeCode:String,
-    establishingYear:String,
-    collegeDirector:String,
-    coursesAvailable:String,
-    numOfAlumni:String,
-  }
+  addInfo: {
+    collegeName: String,
+    collegeCode: String,
+    establishingYear: String,
+    collegeDirector: String,
+    coursesAvailable: String,
+    numOfAlumni: String,
+  },
 });
 
 const studentSchema = new mongoose.Schema({
   name: String,
   email: String,
   password: String,
-  addInfo:{
-    firstName:String,
-    lastName:String,
-    currentYear:String,
-    branch:String,
-    batch:String,
-    collegeName:String,
-    position:String,
-    termsCheckbox:Boolean,
-  }
+  addInfo: {
+    firstName: String,
+    lastName: String,
+    currentYear: String,
+    branch: String,
+    batch: String,
+    collegeName: String,
+    position: String,
+    termsCheckbox: Boolean,
+  },
 });
 
 const Alumni = mongoose.model('Alumni', alumniSchema);
@@ -103,19 +103,19 @@ app.post('/register/students', async (req, res) => {
     console.error('Error saving student:', error.message);
   }
 });
-// PUT route for updating alumni profile
+
+// PUT routes for updating profiles
 app.put('/update/alumni/:id', async (req, res) => {
   const userId = req.params.id;
-  
-  // Validate the userId
+
   if (!mongoose.Types.ObjectId.isValid(userId)) {
     return res.status(400).json({ error: 'Invalid user ID' });
   }
 
   try {
     const updatedAlumni = await Alumni.findByIdAndUpdate(
-      userId, 
-      { $set: { addInfo: req.body.addInfo } }, 
+      userId,
+      { $set: { addInfo: req.body.addInfo } },
       { new: true, runValidators: true }
     );
 
@@ -128,19 +128,18 @@ app.put('/update/alumni/:id', async (req, res) => {
     res.status(400).json({ error: 'Error updating alumni profile', details: error.message });
   }
 });
+
 app.put('/update/college/:id', async (req, res) => {
-  console.log('Request body:', req.body);
   const userId = req.params.id;
 
-  // Validate the userId
   if (!mongoose.Types.ObjectId.isValid(userId)) {
     return res.status(400).json({ error: 'Invalid user ID' });
   }
 
   try {
     const updatedCollege = await College.findByIdAndUpdate(
-      userId, 
-      { $set: { addInfo: req.body.addInfo } }, 
+      userId,
+      { $set: { addInfo: req.body.addInfo } },
       { new: true, runValidators: true }
     );
 
@@ -150,23 +149,21 @@ app.put('/update/college/:id', async (req, res) => {
 
     res.status(200).json({ message: 'College updated successfully', updatedCollege });
   } catch (error) {
-    console.error('Error updating college profile:', error); // Log the error details
     res.status(400).json({ error: 'Error updating college profile', details: error.message });
   }
 });
+
 app.put('/update/student/:id', async (req, res) => {
-  console.log('Request body:', req.body);
   const userId = req.params.id;
 
-  // Validate the userId
   if (!mongoose.Types.ObjectId.isValid(userId)) {
     return res.status(400).json({ error: 'Invalid user ID' });
   }
 
   try {
     const updatedStudent = await Student.findByIdAndUpdate(
-      userId, 
-      { $set: { addInfo: req.body.addInfo } }, 
+      userId,
+      { $set: { addInfo: req.body.addInfo } },
       { new: true, runValidators: true }
     );
 
@@ -176,78 +173,11 @@ app.put('/update/student/:id', async (req, res) => {
 
     res.status(200).json({ message: 'Student updated successfully', updatedStudent });
   } catch (error) {
-    console.error('Error updating student profile:', error); // Log the error details
     res.status(400).json({ error: 'Error updating student profile', details: error.message });
   }
 });
 
-
-// Route for updating alumni profile with additional information
-app.post('/update/alumni/:id', async (req, res) => {
-  try {
-    const { id } = req.params;
-    const addInfo = req.body;
-
-    const updatedAlumni = await Alumni.findByIdAndUpdate(
-      id,
-      { addInfo },
-      { new: true }
-    );
-
-    if (!updatedAlumni) {
-      return res.status(404).json({ message: 'Alumni not found' });
-    }
-
-    res.status(200).json({ message: 'Alumni profile updated successfully', updatedAlumni });
-  } catch (error) {
-    res.status(400).json({ error: 'Error updating alumni profile', details: error.message });
-    console.error('Error updating alumni profile:', error.message);
-  }
-});
-app.post('/update/college/:id', async (req, res) => {
-  try {
-    const { id } = req.params;
-    const addInfo = req.body;
-
-    const updatedCollege = await College.findByIdAndUpdate(
-      id,
-      { addInfo },
-      { new: true }
-    );
-
-    if (!updatedCollege) {
-      return res.status(404).json({ message: 'College not found' });
-    }
-
-    res.status(200).json({ message: 'College profile updated successfully', updatedCollege });
-  } catch (error) {
-    res.status(400).json({ error: 'Error updating college profile', details: error.message });
-    console.error('Error updating college profile:', error.message);
-  }
-});
-app.post('/update/student/:id', async (req, res) => {
-  try {
-    const { id } = req.params;
-    const addInfo = req.body;
-
-    const updatedStudent = await Student.findByIdAndUpdate(
-      id,
-      { addInfo },
-      { new: true }
-    );
-
-    if (!updatedStudent) {
-      return res.status(404).json({ message: 'Student not found' });
-    }
-
-    res.status(200).json({ message: 'Student profile updated successfully', updatedStudent });
-  } catch (error) {
-    res.status(400).json({ error: 'Error updating student profile', details: error.message });
-    console.error('Error updating Student profile:', error.message);
-  }
-});
-
-// Login routes for Alumni, College, and Student
+// Login routes
 app.post('/login-alumnilist', async (req, res) => {
   try {
     const { emailOrPhone, password } = req.body;
@@ -294,7 +224,7 @@ app.post('/login-students', async (req, res) => {
 });
 
 // Connect to MongoDB and start the server
-mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(MONGO_URI)
   .then(() => {
     console.log('Connected to MongoDB');
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
