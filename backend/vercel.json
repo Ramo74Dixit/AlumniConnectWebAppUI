@@ -8,7 +8,39 @@
     ],
     "routes": [
       {
-        "src": "/(.*)",
+        "src": "/register/alumnilist",
+        "dest": "/index.js"
+      },
+      {
+        "src": "/register/colleges",
+        "dest": "/index.js"
+      },
+      {
+        "src": "/register/students",
+        "dest": "/index.js"
+      },
+      {
+        "src": "/update/alumni/:id",
+        "dest": "/index.js"
+      },
+      {
+        "src": "/update/college/:id",
+        "dest": "/index.js"
+      },
+      {
+        "src": "/update/student/:id",
+        "dest": "/index.js"
+      },
+      {
+        "src": "/login-alumnilist",
+        "dest": "/index.js"
+      },
+      {
+        "src": "/login-colleges",
+        "dest": "/index.js"
+      },
+      {
+        "src": "/login-students",
         "dest": "/index.js"
       }
     ]
