@@ -27,7 +27,7 @@ const Register = () => {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const endpoint = `http://localhost:5000/register/${formData.role}`;
+    const endpoint = `https://alumni-connect-web-app-ui.vercel.app/register/${formData.role}`;
     try {
       const response = await fetch(endpoint, {
         method: 'POST',

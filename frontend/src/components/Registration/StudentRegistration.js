@@ -43,7 +43,7 @@ const StudentRegistration = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:5000/update/student/${userId}`, {
+      const response = await fetch(`https://alumni-connect-web-app-ui.vercel.app/update/student/${userId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
